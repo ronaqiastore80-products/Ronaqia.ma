@@ -325,7 +325,14 @@ function toggleIngredient(el) {
 }
 
 function toggleMenu() {
-  document.getElementById('mainNav')?.classList.toggle('open');
+  const nav = document.getElementById('mainNav');
+  const isOpen = nav?.classList.toggle('open');
+  document.body.classList.toggle('menu-open', !!isOpen);
+}
+
+function closeMenu() {
+  document.getElementById('mainNav')?.classList.remove('open');
+  document.body.classList.remove('menu-open');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -333,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.main-nav a').forEach(link => {
     link.addEventListener('click', () => {
-      document.getElementById('mainNav')?.classList.remove('open');
+      closeMenu();
     });
   });
 
