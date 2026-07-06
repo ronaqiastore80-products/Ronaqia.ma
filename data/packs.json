@@ -1,0 +1,96 @@
+{
+  "packs": [
+    {
+      "id": "infinite",
+      "name": "أعيدي لِبشرتك رونقها وشبابها مع روتين Infinitie المتكامل",
+      "subtitle": "تهانينا! لقد تـأهلت للحصول على العرض الحصري",
+      "image": "images/pack1.jpg",
+      "price": "2 080,55 DH",
+      "topBadge": "Promotion",
+      "cadeauTag": "الهدية المجانية: مرطب الشفاه الفاخر Aloe Lips مجاناً مع الباك!",
+      "giftPosition": "pos-tl",
+      "promotion": {
+        "active": true,
+        "text": "عرض خاص وحصري: خصم بقيمة 90 درهم + مرطب الشفاه Aloe Lips مجاناً!",
+        "badgeColor": "#e74c3c"
+      },
+      "detailId": "infinite",
+      "enabled": true,
+      "sortOrder": 1,
+      "description": "بلسم للشفاه فائق الترطيب والحماية، بفضل مزيج الألوفيرا وزيت الجوجوبا وشمع العسل. يمنح الشفاه الجافة أو المتشققة ترطيبًا عميقًا وراحة فورية، ويساعد على ترميمها وحمايتها"
+    },
+    {
+      "id": "pack-logic",
+      "name": "روتين Soins Logic الذكي — عناية طبيعية متكاملة",
+      "subtitle": "3 منتجات طبيعية + تخفيض 95 DH + توصيل مجاني",
+      "image": "images/pack-logic.png",
+      "price": "949 DH",
+      "topBadge": "Promotion",
+      "cadeauTag": "🎁 -95 DH + توصيل مجاني",
+      "giftPosition": "pos-br",
+      "promotion": {
+        "active": true,
+        "text": "هدية الروتين: تخفيض بقيمة -95 DH + التوصيل مجاني!",
+        "badgeColor": "#ff0000"
+      },
+      "detailId": "logic",
+      "enabled": true,
+      "sortOrder": 2,
+      "description": "روتين يومي من 3 خطوات: تنظيف، توازن وترطيب — أكثر من 94% مكونات طبيعية"
+    },
+    {
+      "id": "pack-routine",
+      "name": "Pack Routine Wajha",
+      "subtitle": "Gel + Sérum + Crème — kolchi f blassa",
+      "image": "",
+      "price": "650 DH",
+      "topBadge": "TOP",
+      "cadeauTag": "🎁 + Cadeau",
+      "giftPosition": "pos-tl",
+      "promotion": {
+        "active": true,
+        "text": "-50 DH",
+        "badgeColor": "#e67e22"
+      },
+      "detailId": null,
+      "enabled": true,
+      "sortOrder": 3
+    },
+    {
+      "id": "pack-limitee",
+      "name": "Pack Offre Limitée",
+      "subtitle": "Réduction kbira — ma tmissach!",
+      "image": "",
+      "price": "720 DH",
+      "topBadge": "-30%",
+      "cadeauTag": "🎁 Cadeau Gratuit",
+      "giftPosition": "pos-br",
+      "promotion": {
+        "active": true,
+        "text": "Cadeau offert",
+        "badgeColor": "#9b59b6"
+      },
+      "detailId": null,
+      "enabled": true,
+      "sortOrder": 4
+    },
+    {
+      "id": "pack-decouverte",
+      "name": "Pack Découverte",
+      "subtitle": "Bghiti tjrb? Hada howa l'pack dyalek",
+      "image": "",
+      "price": "350 DH",
+      "topBadge": "NEW",
+      "cadeauTag": "🎁 Cadeau Découverte",
+      "giftPosition": "pos-tr",
+      "promotion": {
+        "active": true,
+        "text": "-15%",
+        "badgeColor": "#c9a84c"
+      },
+      "detailId": null,
+      "enabled": true,
+      "sortOrder": 5
+    }
+  ]
+}

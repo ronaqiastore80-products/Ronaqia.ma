@@ -1,0 +1,5 @@
+{
+  "adminUsername": "admin",
+  "adminPasswordHash": "8607786526fe44c70d88fe35543df24b$64b8f63bbd750aecaf739eb773769a67a4316bb7df8749bf3f849fe708e34f01b1aeacc63cd63a854fc6d94d8b1b526fa9f4bc0009647bced7df0844ae387adf",
+  "sessionSecret": "change-this-secret-in-production"
+}
