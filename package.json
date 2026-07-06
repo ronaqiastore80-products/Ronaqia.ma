@@ -1,0 +1,11 @@
+{
+  "name": "ronaqia-landing",
+  "version": "1.0.0",
+  "description": "Landing page Ronaqia — site statique + admin local Node.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "private": true
+}

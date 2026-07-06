@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administration – ALOE ECLAT Packs</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cairo:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<!-- ══ LOGIN ══ -->
+<div id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <div class="login-logo">🌿 ALOE ECLAT</div>
+    <h1>Administration</h1>
+    <p class="login-sub">Gestion des packs et promotions</p>
+    <form id="loginForm">
+      <label>Utilisateur</label>
+      <input type="text" id="loginUser" autocomplete="username" required>
+      <label>Mot de passe</label>
+      <input type="password" id="loginPass" autocomplete="current-password" required>
+      <button type="submit" class="btn-primary">Se connecter</button>
+      <p id="loginError" class="error-msg"></p>
+    </form>
+    <p class="login-hint">Défaut: admin / admin123</p>
+  </div>
+</div>
+
+<!-- ══ DASHBOARD ══ -->
+<div id="dashboard" class="dashboard hidden">
+  <aside class="sidebar">
+    <div class="sidebar-brand">🌿 Admin Panel</div>
+    <nav>
+      <button class="nav-btn active" data-tab="packs">📦 Packs</button>
+      <button class="nav-btn" data-tab="whatsapp">📱 WhatsApp</button>
+      <button class="nav-btn" data-tab="export">📤 Publication</button>
+      <button class="nav-btn" data-tab="settings">⚙️ Paramètres</button>
+    </nav>
+    <button id="logoutBtn" class="btn-logout">Déconnexion</button>
+    <a href="/" class="btn-preview-site" target="_blank">↗ Voir le site</a>
+  </aside>
+
+  <main class="main-content">
+    <div id="localOnlyBanner" class="local-banner hidden">
+      ⚠️ L'administration fonctionne uniquement en local via <strong>node server.js</strong> (localhost:3000).
+    </div>
+
+    <!-- TAB: PACKS -->
+    <section id="tab-packs" class="tab-panel active">
+      <div class="panel-header">
+        <h2>Gestion des Packs</h2>
+        <button id="addPackBtn" class="btn-primary">+ Ajouter un pack</button>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Nom</th>
+              <th>Prix</th>
+              <th>Promotion</th>
+              <th>Statut</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="packsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TAB: WHATSAPP -->
+    <section id="tab-whatsapp" class="tab-panel">
+      <div class="panel-header"><h2>Numéro WhatsApp</h2></div>
+      <div class="config-card">
+        <label>Numéro (format international sans +)</label>
+        <input type="text" id="whatsappInput" placeholder="212600000000">
+        <p class="hint">Exemple Maroc: 212612345678</p>
+        <button id="saveWhatsappBtn" class="btn-primary">Enregistrer</button>
+        <p id="whatsappMsg" class="success-msg"></p>
+      </div>
+    </section>
+
+    <!-- TAB: EXPORT / GITHUB PAGES -->
+    <section id="tab-export" class="tab-panel">
+      <div class="panel-header"><h2>Publication GitHub Pages</h2></div>
+      <div class="config-card export-card">
+        <p class="export-intro">
+          Le site public lit <code>data/packs.json</code> et <code>data/config.json</code> en statique.
+          Après vos modifications locales, exportez les fichiers puis publiez-les sur GitHub.
+        </p>
+        <ol class="export-steps">
+          <li>Modifiez vos packs et le numéro WhatsApp depuis cet admin</li>
+          <li>Cliquez sur <strong>Exporter les données</strong> ci-dessous</li>
+          <li>Remplacez <code>data/packs.json</code> et <code>data/config.json</code> dans votre dépôt</li>
+          <li>Commit + push → GitHub Pages met à jour le site automatiquement</li>
+        </ol>
+        <div class="export-actions">
+          <button id="exportDataBtn" class="btn-primary btn-export">📤 Exporter les données</button>
+          <button id="previewSiteBtn" class="btn-secondary" type="button">↗ Prévisualiser le site</button>
+        </div>
+        <p id="exportMsg" class="success-msg"></p>
+        <p class="hint export-hint">
+          Fichiers générés : <code>packs.json</code> (tous les packs) et <code>config.json</code> (WhatsApp uniquement).
+          Le fichier <code>data/admin.json</code> reste sur votre PC et n'est jamais publié.
+        </p>
+      </div>
+    </section>
+
+    <!-- TAB: SETTINGS -->
+    <section id="tab-settings" class="tab-panel">
+      <div class="panel-header"><h2>Paramètres du compte</h2></div>
+      <div class="config-card">
+        <label>Nom d'utilisateur</label>
+        <input type="text" id="adminUserInput">
+        <label>Nouveau mot de passe (min. 6 caractères)</label>
+        <input type="password" id="adminPassInput" placeholder="Laisser vide pour ne pas changer">
+        <button id="saveSettingsBtn" class="btn-primary">Enregistrer</button>
+        <p id="settingsMsg" class="success-msg"></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Preview sidebar -->
+  <aside class="preview-panel" id="previewPanel">
+    <h3>Aperçu en direct</h3>
+    <div id="livePreview" class="live-preview"></div>
+  </aside>
+</div>
+
+<!-- ══ MODAL EDIT PACK ══ -->
+<div id="packModal" class="modal hidden">
+  <div class="modal-backdrop" onclick="closePackModal()"></div>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="modalTitle">Modifier le pack</h2>
+      <button class="modal-close" onclick="closePackModal()">×</button>
+    </div>
+    <form id="packForm" class="modal-body">
+      <input type="hidden" id="packId">
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nom du pack *</label>
+          <input type="text" id="packName" required>
+        </div>
+        <div class="form-group">
+          <label>Prix *</label>
+          <input type="text" id="packPrice" placeholder="490 DH" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Sous-titre</label>
+        <input type="text" id="packSubtitle">
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <textarea id="packDescription" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Chemin image (ex: images/pack1.jpg)</label>
+        <input type="text" id="packImage" placeholder="images/mon-pack.jpg">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Badge haut (SOLDE, BIO...)</label>
+          <input type="text" id="packTopBadge">
+        </div>
+        <div class="form-group">
+          <label>Tag cadeau</label>
+          <input type="text" id="packCadeauTag" placeholder="🎁 Cadeau Gratuit">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Position cadeau</label>
+          <select id="packGiftPosition">
+            <option value="pos-tl">Haut gauche</option>
+            <option value="pos-tr">Haut droite</option>
+            <option value="pos-br">Bas droite</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Ordre d'affichage</label>
+          <input type="number" id="packSortOrder" min="1" value="1">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Page détail (ID section, ex: infinite)</label>
+        <input type="text" id="packDetailId" placeholder="infinite ou vide">
+      </div>
+
+      <fieldset class="promo-fieldset">
+        <legend>Promotion</legend>
+        <label class="checkbox-label">
+          <input type="checkbox" id="promoActive"> Promotion active
+        </label>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Texte promotion</label>
+            <input type="text" id="promoText" placeholder="Livraison gratuite, -90 DH...">
+            <div class="promo-presets">
+              <button type="button" class="preset-btn" data-text="Livraison gratuite" data-color="#2d6a4f">Livraison gratuite</button>
+              <button type="button" class="preset-btn" data-text="-50 DH" data-color="#e67e22">-50 DH</button>
+              <button type="button" class="preset-btn" data-text="-90 DH" data-color="#e74c3c">-90 DH</button>
+              <button type="button" class="preset-btn" data-text="Cadeau offert" data-color="#9b59b6">Cadeau offert</button>
+              <button type="button" class="preset-btn" data-text="-15%" data-color="#c9a84c">-15%</button>
+              <button type="button" class="preset-btn" data-text="Offre spéciale" data-color="#1a3d2e">Offre spéciale</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Couleur du badge</label>
+            <div class="color-row">
+              <input type="color" id="promoColor" value="#2d6a4f">
+              <input type="text" id="promoColorHex" value="#2d6a4f">
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <label class="checkbox-label">
+        <input type="checkbox" id="packEnabled" checked> Pack visible sur le site
+      </label>
+
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary" onclick="closePackModal()">Annuler</button>
+        <button type="submit" class="btn-primary">Enregistrer</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/admin.js"></script>
+</body>
+</html>

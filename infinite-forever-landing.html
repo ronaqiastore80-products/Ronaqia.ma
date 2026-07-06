@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinite by Forever – روتين مكافحة الشيخوخة الطبيعي</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green-deep: #1B4332;
+    --green-mid: #2D6A4F;
+    --green-light: #52B788;
+    --green-pale: #D8F3DC;
+    --cream: #F8F4E8;
+    --cream-dark: #EDE8D5;
+    --gold: #C9A84C;
+    --gold-light: #E8D5A3;
+    --white: #FFFFFF;
+    --text-dark: #1A1A1A;
+    --text-mid: #4A4A4A;
+    --text-light: #7A7A7A;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'Cairo', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 50%, #1B4332 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px 80px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(82,183,136,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 80% 20%, rgba(201,168,76,0.12) 0%, transparent 60%);
+  }
+
+  .hero-leaf {
+    position: absolute;
+    opacity: 0.06;
+    font-size: 320px;
+    top: -60px;
+    left: -60px;
+    color: var(--green-light);
+    line-height: 1;
+    pointer-events: none;
+    animation: floatLeaf 8s ease-in-out infinite;
+  }
+
+  .hero-leaf2 {
+    position: absolute;
+    opacity: 0.05;
+    font-size: 200px;
+    bottom: -20px;
+    right: -20px;
+    color: var(--gold);
+    pointer-events: none;
+    animation: floatLeaf 10s ease-in-out infinite reverse;
+  }
+
+  @keyframes floatLeaf {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 700px; }
+
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(201,168,76,0.2);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 50px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    color: rgba(255,255,255,0.75);
+    margin: 20px 0 36px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold) 0%, #A8864A 100%);
+    color: var(--white);
+    padding: 16px 44px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    box-shadow: 0 8px 32px rgba(201,168,76,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .hero-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(201,168,76,0.5);
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 52px;
+    flex-wrap: wrap;
+  }
+
+  .stat { text-align: center; }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.08em;
+  }
+
+  /* ── WAVE DIVIDER ── */
+  .wave-gold {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    margin-top: -2px;
+  }
+  .wave-gold svg { display: block; width: 100%; }
+
+  /* ── PROBLEM SECTION ── */
+  .section-problem {
+    background: var(--cream);
+    padding: 80px 20px;
+    text-align: center;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--green-mid);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 400;
+    color: var(--green-deep);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-desc {
+    max-width: 560px;
+    margin: 0 auto 50px;
+    color: var(--text-mid);
+    line-height: 1.85;
+    font-size: 0.98rem;
+    font-weight: 300;
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .problem-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 28px 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    border: 1px solid var(--cream-dark);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .problem-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(45,106,79,0.12);
+  }
+
+  .problem-icon {
+    font-size: 2rem;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .problem-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--green-deep);
+    margin-bottom: 8px;
+  }
+
+  .problem-card p {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* ── SOLUTION SECTION ── */
+  .section-solution {
+    background: var(--green-deep);
+    padding: 90px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-solution::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(82,183,136,0.08) 0%, transparent 70%);
+  }
+
+  .section-solution .section-label { color: var(--gold-light); }
+  .section-solution .section-title { color: var(--white); }
+  .section-solution .section-desc { color: rgba(255,255,255,0.7); }
+
+  .aloe-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(82,183,136,0.15);
+    border: 1px solid rgba(82,183,136,0.4);
+    color: var(--green-pale);
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    margin-bottom: 50px;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+  }
+
+  .benefits-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .benefit-pill {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.85);
+    padding: 12px 22px;
+    border-radius: 50px;
+    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 300;
+  }
+
+  .benefit-pill span { font-size: 1.1rem; }
+
+  /* ── PRODUCTS SECTION ── */
+  .section-products {
+    background: var(--cream);
+    padding: 90px 20px;
+  }
+
+  .products-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    max-width: 1100px;
+    margin: 0 auto 50px;
+  }
+
+  .product-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 6px 28px rgba(0,0,0,0.07);
+    border: 1px solid var(--cream-dark);
+    transition: transform 0.25s, box-shadow 0.25s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 48px rgba(45,106,79,0.15);
+  }
+
+  .product-img-wrap {
+    background: linear-gradient(135deg, var(--green-pale) 0%, var(--cream-dark) 100%);
+    padding: 36px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+  }
+
+  .product-emoji { font-size: 3.5rem; }
+
+  .product-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+
+  .product-ref {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .product-name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--green-deep);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .product-volume {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-bottom: 12px;
+  }
+
+  .product-desc {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+    font-weight: 300;
+    flex: 1;
+    margin-bottom: 20px;
+  }
+
+  .product-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid var(--cream-dark);
+  }
+
+  .product-price {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--green-mid);
+  }
+
+  .product-price small {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: var(--text-light);
+    font-weight: 400;
+    display: block;
+    line-height: 1;
+  }
+
+  .btn-add {
+    background: var(--green-mid);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 0.82rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn-add:hover { background: var(--green-deep); }
+
+  .featured-kit {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, var(--green-deep) 0%, #2D6A4F 100%);
+    border-radius: 24px;
+    padding: 48px 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .featured-kit::before {
+    content: '∞';
+    position: absolute;
+    font-size: 280px;
+    color: rgba(255,255,255,0.04);
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .kit-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+
+  .featured-kit h3 {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .featured-kit p {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.92rem;
+    line-height: 1.8;
+    font-weight: 300;
+    max-width: 400px;
+    margin-bottom: 28px;
+  }
+
+  .kit-price-block { margin-bottom: 28px; }
+
+  .kit-price {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--gold-light);
+  }
+
+  .kit-price sup {
+    font-size: 1rem;
+    vertical-align: super;
+  }
+
+  .kit-ref {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.45);
+    margin-top: 4px;
+  }
+
+  .btn-kit {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold) 0%, #A8864A 100%);
+    color: var(--white);
+    padding: 14px 36px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    font-family: var(--font-body);
+    box-shadow: 0 6px 24px rgba(201,168,76,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-kit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 36px rgba(201,168,76,0.55);
+  }
+
+  .kit-items {
+    flex: 1;
+    min-width: 220px;
+  }
+
+  .kit-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .kit-item:last-child { border-bottom: none; }
+
+  .kit-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .kit-item span {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.8);
+    font-weight: 300;
+  }
+
+  /* ── HOW TO USE ── */
+  .section-howto {
+    background: var(--cream-dark);
+    padding: 90px 20px;
+    text-align: center;
+  }
+
+  .steps-row {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 50px auto 0;
+    position: relative;
+  }
+
+  .steps-row::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .step-card {
+    flex: 1;
+    min-width: 160px;
+    max-width: 200px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-num {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--green-deep);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    border: 3px solid var(--gold);
+  }
+
+  .step-name {
+    font-weight: 600;
+    color: var(--green-deep);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+
+  .step-desc {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ── FAQ ── */
+  .section-faq {
+    background: var(--cream);
+    padding: 90px 20px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .faq-header { text-align: center; margin-bottom: 50px; }
+
+  .faq-item {
+    background: var(--white);
+    border-radius: 14px;
+    margin-bottom: 14px;
+    border: 1px solid var(--cream-dark);
+    overflow: hidden;
+  }
+
+  .faq-q {
+    padding: 20px 24px;
+    font-weight: 600;
+    color: var(--green-deep);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    user-select: none;
+    transition: background 0.2s;
+  }
+
+  .faq-q:hover { background: var(--cream); }
+
+  .faq-q .arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+    color: var(--gold);
+  }
+
+  .faq-item.open .arrow { transform: rotate(180deg); }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.3s;
+    padding: 0 24px;
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    line-height: 1.85;
+    font-weight: 300;
+  }
+
+  .faq-item.open .faq-a {
+    max-height: 300px;
+    padding: 0 24px 20px;
+  }
+
+  /* ── CTA ── */
+  .section-cta {
+    background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 100%);
+    padding: 100px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+  }
+
+  .section-cta h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .section-cta h2 em { font-style: italic; color: var(--gold-light); }
+
+  .section-cta p {
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    margin-bottom: 40px;
+    font-weight: 300;
+    position: relative;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .btn-outline-white {
+    display: inline-block;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.85);
+    padding: 14px 34px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 400;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .btn-outline-white:hover {
+    border-color: var(--gold-light);
+    color: var(--gold-light);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--green-deep);
+    padding: 30px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  footer p {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.35);
+    font-weight: 300;
+  }
+
+  /* ── GOLD WAVE ── */
+  .gold-wave {
+    position: relative;
+    height: 60px;
+    background: var(--cream);
+    overflow: hidden;
+  }
+
+  .gold-wave::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold-light) 50%, var(--gold) 70%, transparent 100%);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .hero-stats { gap: 24px; }
+    .featured-kit { padding: 32px 24px; flex-direction: column; }
+    .featured-kit::before { display: none; }
+    .steps-row::before { display: none; }
+    .step-card { max-width: 100%; }
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="hero-leaf">🌿</div>
+  <div class="hero-leaf2">✦</div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Infinite by Forever · الألوة فيرا الطبيعية</span>
+    <h1>روتين مكافحة الشيخوخة<br><em>الطبيعي الفعّال</em></h1>
+    <p class="hero-sub">اكتشفي سرّ البشرة الشابة مع مجموعة Infinite — تقنية مبتكرة تجمع بين الألوة فيرا والمكونات النشطة المضادة للشيخوخة لنتائج استثنائية.</p>
+    <a href="#products" class="hero-cta">اكتشفي المجموعة</a>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">40+</span>
+        <span class="stat-label">سنة من الثقة</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">5</span>
+        <span class="stat-label">منتجات متكاملة</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">طبيعي وآمن</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gold wave divider -->
+<div class="wave-gold">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" height="60">
+    <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="#F8F4E8"/>
+    <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30" fill="none" stroke="#C9A84C" stroke-width="2"/>
+  </svg>
+</div>
+
+<!-- ══════════ PROBLEM ══════════ -->
+<section class="section-problem">
+  <p class="section-label fade-up">هل تعانين من…</p>
+  <h2 class="section-title fade-up">علامات الشيخوخة<br>التي <em>تزعجكِ</em> يومياً؟</h2>
+  <p class="section-desc fade-up">البشرة تتغير مع الزمن — ولكن لديك الحلّ. مجموعة Infinite by Forever صُمّمت خصيصاً لمعالجة أبرز مشكلات الشيخوخة الجلدية.</p>
+  <div class="problem-grid">
+    <div class="problem-card fade-up">
+      <span class="problem-icon">〰️</span>
+      <h3>التجاعيد والخطوط الدقيقة</h3>
+      <p>تظهر مع مرور الوقت على الجبهة وحول العيون والفم</p>
+    </div>
+    <div class="problem-card fade-up">
+      <span class="problem-icon">🌑</span>
+      <h3>البقع الداكنة وعدم تجانس البشرة</h3>
+      <p>ناجمة عن التعرض للشمس والشيخوخة الطبيعية</p>
+    </div>
+    <div class="problem-card fade-up">
+      <span class="problem-icon">💧</span>
+      <h3>فقدان المرونة والترطيب</h3>
+      <p>البشرة تبدو متعبة وجافة وتفقد نضارتها</p>
+    </div>
+    <div class="problem-card fade-up">
+      <span class="problem-icon">✨</span>
+      <h3>فقدان الإشراق الطبيعي</h3>
+      <p>البشرة الباهتة التي تحتاج إلى إعادة الحيوية</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SOLUTION ══════════ -->
+<section class="section-solution">
+  <p class="section-label fade-up">الحلّ الطبيعي</p>
+  <h2 class="section-title fade-up">قوة <em>الألوة فيرا</em><br>في خدمة جمالك</h2>
+  <p class="section-desc fade-up">تعتمد مجموعة Infinite by Forever على نباتات الألوة فيرا عالية الجودة المزروعة في بيئات طبيعية نقية، لإمداد بشرتك بكل ما تحتاجه من التغذية والحماية.</p>
+
+  <div class="aloe-badge fade-up">
+    <span>🌱</span>
+    مستخلص الألوة فيرا الطبيعي 100% — الحلّ الذي تثق به ملايين النساء حول العالم
+  </div>
+
+  <div class="benefits-row fade-up">
+    <div class="benefit-pill"><span>💚</span> مرطّب عميق لـ 24 ساعة</div>
+    <div class="benefit-pill"><span>🧬</span> ينشّط إنتاج الكولاجين</div>
+    <div class="benefit-pill"><span>🌿</span> يحمي من الجذور الحرة</div>
+    <div class="benefit-pill"><span>✨</span> يوحّد لون البشرة</div>
+    <div class="benefit-pill"><span>🔬</span> مُختبر درماتولوجياً</div>
+    <div class="benefit-pill"><span>🚫</span> خالٍ من المواد الضارة</div>
+  </div>
+</section>
+
+<!-- Gold wave divider -->
+<div class="wave-gold" style="background: var(--green-deep); transform: rotate(180deg);">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" height="60">
+    <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30 L1440,60 L0,60 Z" fill="#F8F4E8"/>
+    <path d="M0,30 C240,60 480,0 720,30 C960,60 1200,0 1440,30" fill="none" stroke="#C9A84C" stroke-width="2"/>
+  </svg>
+</div>
+
+<!-- ══════════ PRODUCTS ══════════ -->
+<section class="section-products" id="products">
+  <div class="products-header">
+    <p class="section-label fade-up">مجموعة Infinite by Forever</p>
+    <h2 class="section-title fade-up">منتجات <em>متكاملة</em><br>لروتين مثالي</h2>
+    <p class="section-desc fade-up">كل منتج صُمِّم ليعمل بتآزر مع الآخر — لأقصى النتائج في أقل وقت ممكن.</p>
+  </div>
+
+  <div class="products-grid">
+
+    <!-- Sérum -->
+    <div class="product-card fade-up">
+      <div class="product-img-wrap">
+        <span class="product-emoji">💎</span>
+      </div>
+      <div class="product-body">
+        <div class="product-ref">Réf. 555 · 30 ml</div>
+        <div class="product-name">Sérum Raffermissant</div>
+        <div class="product-volume">سيروم شد البشرة</div>
+        <p class="product-desc">إكسير الشباب الحقيقي — يكافح علامات التقدم في السن بتكثيف فاعلية الألوة فيرا بالتقنيات الجلدية الأكثر تطوراً. يعمل بتناسق مع المنتجات الأخرى لأقصى نتيجة.</p>
+        <div class="product-footer">
+          <div class="product-price">
+            478,63 DH
+            <small>سعر شامل الضريبة</small>
+          </div>
+          <button class="btn-add">اطلبي الآن</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crème Réparatrice -->
+    <div class="product-card fade-up">
+      <div class="product-img-wrap">
+        <span class="product-emoji">🫙</span>
+      </div>
+      <div class="product-body">
+        <div class="product-ref">Réf. 558 · 48,2 ml</div>
+        <div class="product-name">Crème Réparatrice</div>
+        <div class="product-volume">كريم الإصلاح والترطيب</div>
+        <p class="product-desc">يمنحك ترطيباً عميقاً لترميم البشرة واستعادة مرونتها. غني بالألوة فيرا، الجوجوبا، وفيتامين B3 — للمساعدة على إصلاح الحاجز الجلدي الطبيعي.</p>
+        <div class="product-footer">
+          <div class="product-price">
+            533,94 DH
+            <small>سعر شامل الضريبة</small>
+          </div>
+          <button class="btn-add">اطلبي الآن</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Démaquillant -->
+    <div class="product-card fade-up">
+      <div class="product-img-wrap">
+        <span class="product-emoji">🌊</span>
+      </div>
+      <div class="product-body">
+        <div class="product-ref">Réf. 554 · 118 ml</div>
+        <div class="product-name">Démaquillant Hydratant Infinite</div>
+        <div class="product-volume">مُنظّف مرطّب</div>
+        <p class="product-desc">ينظّف ويرطّب بخطوة واحدة. غني بالألوة فيرا لإزالة الشوائب والمكياج لنعومة فائقة. المادة الفعّالة مستخلصة من جوز الهند — هيبوالرجينيك وغير مثيرة للتهيج.</p>
+        <div class="product-footer">
+          <div class="product-price">
+            241,43 DH
+            <small>سعر شامل الضريبة</small>
+          </div>
+          <button class="btn-add">اطلبي الآن</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Complexe Raffermissant -->
+    <div class="product-card fade-up">
+      <div class="product-img-wrap">
+        <span class="product-emoji">💊</span>
+      </div>
+      <div class="product-body">
+        <div class="product-ref">Réf. 556 · 60 comprimés</div>
+        <div class="product-name">Complexe Raffermissant</div>
+        <div class="product-volume">مجمع شد البشرة — مكمل غذائي</div>
+        <p class="product-desc">يحارب علامات شيخوخة البشرة الظاهرة من الداخل. مكمّل غذائي متخصص يزوّد جسمك بكل العناصر الغذائية اللازمة لمقاومة الشيخوخة من الداخل للخارج.</p>
+        <div class="product-footer">
+          <div class="product-price">
+            476,12 DH
+            <small>سعر شامل الضريبة</small>
+          </div>
+          <button class="btn-add">اطلبي الآن</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FEATURED KIT -->
+  <div class="featured-kit fade-up">
+    <div style="flex:1; min-width:260px;">
+      <span class="kit-badge">✦ الأكثر توفيراً</span>
+      <h3>Coffret Infinite by Forever</h3>
+      <p>الحزمة الكاملة التي تجمع 4 منتجات أساسية لروتين مكافحة الشيخوخة — بسعر استثنائي يوفّر عليك ما يزيد عن 270 DH.</p>
+      <div class="kit-price-block">
+        <div class="kit-price">1 610,80 DH</div>
+        <div class="kit-ref">Réf. 553 · 4 منتجات متكاملة</div>
+      </div>
+      <button class="btn-kit">اطلبي الحزمة الكاملة</button>
+    </div>
+    <div class="kit-items">
+      <div class="kit-item"><div class="kit-dot"></div><span>💎 Sérum Raffermissant — سيروم الشد</span></div>
+      <div class="kit-item"><div class="kit-dot"></div><span>🫙 Crème Réparatrice — كريم الإصلاح</span></div>
+      <div class="kit-item"><div class="kit-dot"></div><span>🌊 Démaquillant Hydratant — مُنظّف مرطّب</span></div>
+      <div class="kit-item"><div class="kit-dot"></div><span>💊 Complexe Raffermissant — مكمل غذائي</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ HOW TO USE ══════════ -->
+<section class="section-howto">
+  <p class="section-label fade-up">خطوات الاستخدام</p>
+  <h2 class="section-title fade-up">روتينكِ <em>المثالي</em> في 4 خطوات</h2>
+  <p class="section-desc fade-up">اتبعي هذا الترتيب كل صباح ومساء للحصول على أفضل النتائج.</p>
+  <div class="steps-row">
+    <div class="step-card fade-up">
+      <div class="step-num">١</div>
+      <div class="step-name">التنظيف</div>
+      <p class="step-desc">استخدمي المُنظّف المرطّب لإزالة المكياج والشوائب بلطف</p>
+    </div>
+    <div class="step-card fade-up">
+      <div class="step-num">٢</div>
+      <div class="step-name">السيروم</div>
+      <p class="step-desc">ضعي السيروم الرافع على البشرة النظيفة بحركات تدليك خفيفة</p>
+    </div>
+    <div class="step-card fade-up">
+      <div class="step-num">٣</div>
+      <div class="step-name">الكريم</div>
+      <p class="step-desc">أنهي بكريم الإصلاح لإغلاق العناصر الفعّالة وترطيب البشرة</p>
+    </div>
+    <div class="step-card fade-up">
+      <div class="step-num">٤</div>
+      <div class="step-name">التغذية الداخلية</div>
+      <p class="step-desc">تناولي مجمع الشد الغذائي يومياً لتعزيز النتائج من الداخل</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ ══════════ -->
+<section class="section-faq">
+  <div class="faq-header">
+    <p class="section-label">أسئلة شائعة</p>
+    <h2 class="section-title fade-up">كل ما <em>تريدين</em> معرفته</h2>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      من تناسبها هذه المنتجات؟
+      <span class="arrow">⌄</span>
+    </div>
+    <div class="faq-a">تناسب مجموعة Infinite جميع أنواع البشرة، وتحديداً النساء اللواتي تبدأ لديهن علامات الشيخوخة أو اللواتي يرغبن في الوقاية والحفاظ على شباب بشرتهن. المنتجات هيبوالرجينيكية وآمنة للبشرة الحساسة.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      متى تظهر النتائج؟
+      <span class="arrow">⌄</span>
+    </div>
+    <div class="faq-a">تبدأ أغلب المستخدمات بملاحظة تحسن في الترطيب والإشراق خلال الأسبوع الأول. للنتائج المثلى في مكافحة التجاعيد وشد البشرة، يُنصح باستخدام منتظم لمدة 4 إلى 8 أسابيع.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      كيف أطلب المنتجات؟
+      <span class="arrow">⌄</span>
+    </div>
+    <div class="faq-a">يمكنكِ الطلب مباشرة عبر هذه الصفحة بالضغط على "اطلبي الآن" أو التواصل معنا مباشرة للحصول على استشارة مجانية واختيار الحزمة الأنسب لاحتياجاتك.</div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      هل هناك ضمان على النتائج؟
+      <span class="arrow">⌄</span>
+    </div>
+    <div class="faq-a">تدعم شركة Forever Living المنتجات بضمان الرضا التام. إذا لم تكوني راضية، تواصلي مع موزّعتك المعتمدة لمعرفة تفاصيل سياسة الإرجاع.</div>
+  </div>
+</section>
+
+<!-- ══════════ FINAL CTA ══════════ -->
+<section class="section-cta">
+  <h2>ابدئي رحلتكِ نحو<br><em>بشرة أكثر شباباً</em></h2>
+  <p>انضمي إلى الآلاف من النساء اللواتي اخترن الطبيعة حلاً</p>
+  <div class="cta-buttons">
+    <a href="#products" class="hero-cta">اطلبي المجموعة الآن</a>
+    <a href="#" class="btn-outline-white">تواصلي معنا</a>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="footer-logo">∞ Infinite by Forever</div>
+  <p>جمال طبيعي · نتائج حقيقية · ثقة منذ 40 عاماً</p>
+</footer>
+
+<script>
+  // FAQ toggle
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
