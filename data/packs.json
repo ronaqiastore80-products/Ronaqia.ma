@@ -40,21 +40,22 @@
     },
     {
       "id": "pack-routine",
-      "name": "Pack Routine Wajha",
-      "subtitle": "Gel + Sérum + Crème — kolchi f blassa",
-      "image": "",
-      "price": "650 DH",
-      "topBadge": "TOP",
-      "cadeauTag": "🎁 + Cadeau",
-      "giftPosition": "pos-tl",
+      "name": "Pack Cheveux Parfaits | باك روتين الشعر المثالي ومحاربة التقصف",
+      "subtitle": "3 منتجات + تخفيض 19 DH + توصيل مجاني",
+      "image": "images/pack-cheveux.png",
+      "price": "884 DH",
+      "topBadge": "Plus demandé",
+      "cadeauTag": "🎁 -19 DH + توصيل مجاني",
+      "giftPosition": "pos-br",
       "promotion": {
         "active": true,
-        "text": "-50 DH",
-        "badgeColor": "#e67e22"
+        "text": "تخفيض 19 DH + التوصيل مجاني!",
+        "badgeColor": "#2d6a4f"
       },
-      "detailId": null,
+      "detailId": "cheveux",
       "enabled": true,
-      "sortOrder": 3
+      "sortOrder": 3,
+      "description": "تبحثين عن شعر ناعم، قوي، ومليء بالحيوية؟ \nاكتشفي الروتين الطبيعي المتكامل للعناية بالشعر من RONAQIA. هاد الباك كيجمع بين قوة الألوفيرا النقية، زيت الجوجوبا، و6 زيوت نباتية فاخرة لتنظيف فروة الرأس بعمق، فك التشابك بكل سهولة، وتغذية الأطراف من الجذور حتى الأعماق ومحاربة التقصف والهيجان بلا ما يخلي أي أثر دهني.\n\n🌱 طبيعي 100% | خالي من السلفات والسيليكون | مناسب لجميع أنواع الشعر."
     },
     {
       "id": "pack-limitee",
@@ -62,7 +63,7 @@
       "subtitle": "Réduction kbira — ma tmissach!",
       "image": "",
       "price": "720 DH",
-      "topBadge": "-30%",
+      "topBadge": "-10%",
       "cadeauTag": "🎁 Cadeau Gratuit",
       "giftPosition": "pos-br",
       "promotion": {

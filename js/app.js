@@ -69,11 +69,33 @@ function openWhatsAppOrder(pack, e) {
   window.open(`https://wa.me/${whatsappNumber}?text=${text}`, '_blank');
 }
 
-function toggleLogicWaSticky(show) {
+function toggleLogicWaSticky(show, packId) {
   const bar = document.getElementById('logicWaSticky');
   if (!bar) return;
   bar.classList.toggle('visible', !!show);
   bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+  if (!show || !packId) return;
+
+  const btn = bar.querySelector('.logic-wa-cta');
+  if (btn) btn.setAttribute('onclick', `orderPack('${packId}', event)`);
+
+  const texts = {
+    'pack-logic': {
+      main: 'اطلبي مجموعتكِ الذكية الآن عبر الواتساب',
+      sub: '(اضغطي هنا لإرسال الطلب مباشرة والاستفادة من التوصيل المجاني)'
+    },
+    'pack-routine': {
+      main: 'اطلبي باك الشعر المثالي الآن عبر الواتساب',
+      sub: '(اضغطي هنا لإرسال الطلب مباشرة والاستفادة من التوصيل المجاني)'
+    }
+  };
+  const copy = texts[packId];
+  if (copy) {
+    const main = bar.querySelector('.logic-wa-cta-main');
+    const sub = bar.querySelector('.logic-wa-cta-sub');
+    if (main) main.textContent = copy.main;
+    if (sub) sub.textContent = copy.sub;
+  }
 }
 
 function closeAllPackDetails() {
@@ -314,7 +336,8 @@ function openPackDetail(detailId, packId) {
     if (window.packObserver) window.packObserver.observe(el);
   });
 
-  toggleLogicWaSticky(detailId === 'logic');
+  const stickyPackMap = { logic: 'pack-logic', cheveux: 'pack-routine' };
+  toggleLogicWaSticky(!!stickyPackMap[detailId], stickyPackMap[detailId]);
 }
 
 function toggleIngredient(el) {

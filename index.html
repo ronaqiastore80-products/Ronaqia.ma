@@ -1753,6 +1753,32 @@
     padding-bottom: 100px;
   }
 
+  #pack-cheveux.visible {
+    padding-bottom: 100px;
+  }
+
+  #pack-cheveux .cheveux-logo {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    color: #718d68;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+    font-weight: 600;
+    direction: rtl;
+    line-height: 1.5;
+  }
+
+  #pack-cheveux .cheveux-logo span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.5em;
+    letter-spacing: 0.15em;
+    display: block;
+    margin-top: 6px;
+    color: #1a1a1a;
+    opacity: 0.7;
+    direction: ltr;
+  }
+
   .pack-final-row {
     margin-top: 8px;
     direction: ltr;
@@ -3258,6 +3284,203 @@
     <div class="logic-wa-cta-wrap">
       <button type="button" class="logic-wa-cta" onclick="orderPack('pack-logic', event)">
         <span class="logic-wa-cta-main">اطلبي مجموعتكِ الذكية الآن عبر الواتساب</span>
+        <span class="logic-wa-cta-sub">(اضغطي هنا لإرسال الطلب مباشرة والاستفادة من التوصيل المجاني)</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="pack-detail-back-wrap">
+    <button type="button" class="btn-back-packs-sm" onclick="closePackView()">← رجوع للباقات</button>
+  </div>
+
+</section>
+
+<!-- ══ PACK CHEVEUX – DESCRIPTION ══ -->
+<section class="section-pack-detail" id="pack-cheveux" data-pack-detail="cheveux">
+  <div class="pack-detail-header fade-up">
+    <div class="cheveux-logo">Pack Cheveux Parfaits<span>RONAQIA · Forever Living</span></div>
+    <h2>باك روتين الشعر المثالي — عناية طبيعية متكاملة ضد التقصف والجفاف</h2>
+    <p class="pack-detail-intro">تبحثين عن شعر ناعم، قوي، ومليء بالحيوية؟ اكتشفي الروتين الطبيعي المتكامل للعناية بالشعر من RONAQIA. هاد الباك كيجمع بين قوة الألوفيرا النقية، زيت الجوجوبا، و6 زيوت نباتية فاخرة لتنظيف فروة الرأس بعمق، فك التشابك بكل سهولة، وتغذية الأطراف من الجذور حتى الأعماق.</p>
+    <p class="pack-detail-intro">🌱 طبيعي 100% | خالي من السلفات والسيليكون | مناسب لجميع أنواع الشعر.</p>
+    <div class="pack-detail-hero-img">
+      <img src="images/pack-cheveux.png" alt="Pack Cheveux Parfaits">
+    </div>
+  </div>
+
+  <p class="routine-label">💇‍♀️ روتين العناية بالشعر (المنتجات والفوائد)</p>
+
+  <div class="products-detail-grid">
+
+    <div class="product-detail-card fade-up">
+      <div class="product-detail-img">
+        <img src="images/cheveux-huile.png" alt="Huile Capillaire Nourrissante">
+      </div>
+      <div class="product-detail-body">
+        <span class="product-step">✨ الخطوة 1</span>
+        <h3>زيت الشعر المغذي</h3>
+        <p class="product-fr">Huile Capillaire Nourrissante</p>
+        <div class="product-price-tag">
+          <div class="price-badge-container">
+            <div class="price-badge">
+              <span class="price-label">✨ ثمن زيت الشعر:</span>
+              <div class="price-value-wrapper">
+                <span class="price-number">339</span>
+                <span class="price-currency">Dhs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <strong>الوصف:</strong>
+          <p>إكسير التغذية الفاخر الذي يجمع بين قوة الألوفيرا و6 زيوت نباتية ذكية لاستعادة جمال وبريق شعرك أو لحيتك. بتركيبة خالية تماماً من السيليكون وبدون أي أثر دهني، يعمل هذا المركز النباتي على ترطيب، حماية، وتنعيم خصلات الشعر (حتى الشعر الخفيف والناعم). يتميز بسهولة تامة في الاستخدام لأنه لا يحتاج إلى غسل (Sans rinçage)، ويترك في شعرك رائحة فواكه ساحرة لا تقاوم.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-detail-card fade-up">
+      <div class="product-detail-img">
+        <img src="images/cheveux-apres-shampo.png" alt="Après-Shampoing Aloe-Jojoba">
+      </div>
+      <div class="product-detail-body">
+        <span class="product-step">🌿 الخطوة 2</span>
+        <h3>بلسم الألوفيرا والجوجوبا</h3>
+        <p class="product-fr">Après-Shampoing Aloe-Jojoba</p>
+        <div class="product-price-tag">
+          <div class="price-badge-container">
+            <div class="price-badge">
+              <span class="price-label">🌿 ثمن البلسم:</span>
+              <div class="price-value-wrapper">
+                <span class="price-number">307</span>
+                <span class="price-currency">Dhs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <strong>الوصف:</strong>
+          <p>خطوة أساسية لا غنى عنها في روتينك اليومي! يعمل هذا البلسم بتركيبته الخالية من السلفات على تنعيم الشعر، فك التشابك بكل سهولة، وتغذيته بعمق مع منح فروة الرأس والشعر ترطيباً مضاعفاً. يحتوي على مزيج فريد من ثلاثة زيوت مختلفة تعمل بانسجام لحبس الرطوبة داخل خصلات الشعر وحمايتها من الجفاف دون أن تتسبب في ثقل الشعر أو إرهاقه.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-detail-card fade-up">
+      <div class="product-detail-img">
+        <img src="images/cheveux-shampo.png" alt="Shampoing Aloe-Jojoba">
+      </div>
+      <div class="product-detail-body">
+        <span class="product-step">🧴 الخطوة 3</span>
+        <h3>شامبو الألوفيرا والجوجوبا</h3>
+        <p class="product-fr">Shampoing Aloe-Jojoba</p>
+        <div class="product-price-tag">
+          <div class="price-badge-container">
+            <div class="price-badge">
+              <span class="price-label">🧴 ثمن الشامبو:</span>
+              <div class="price-value-wrapper">
+                <span class="price-number">257</span>
+                <span class="price-currency">Dhs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="detail-block">
+          <strong>الوصف:</strong>
+          <p>تم تصميم شامبو الألوفيرا والجوجوبا ليعيد الحياة لشعرك عبر تنظيفه بعمق وترطيبه بشكل مثالي ليصبح أكثر لمعاناً ونعومة. تركيبته المطورة تجمع بين الألوفيرا النقية وزيت الجوجوبا المقوي، مما يجعله مثبتاً ومناسباً للاستخدام اليومي. يساعد هذا الشامبو (الخالي تماماً من السلفات) على الحفاظ على التوازن المائي الطبيعي لفروة رأسك ويبقيها هادئة ومحمية.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Prix total pack Cheveux -->
+  <div class="pack-pricing-box fade-up">
+    <p class="pack-pricing-title">💰 السعر الإجمالي للباك</p>
+
+    <div class="pack-price-lines">
+      <div class="pack-price-line">
+        <span>Huile Capillaire Nourrissante</span>
+        <div class="price-badge-container pack-line-price">
+          <div class="price-badge">
+            <span class="price-label">السعر:</span>
+            <div class="price-value-wrapper">
+              <span class="price-number">339</span>
+              <span class="price-currency">Dhs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pack-price-line">
+        <span>Après-Shampoing Aloe-Jojoba</span>
+        <div class="price-badge-container pack-line-price">
+          <div class="price-badge">
+            <span class="price-label">السعر:</span>
+            <div class="price-value-wrapper">
+              <span class="price-number">307</span>
+              <span class="price-currency">Dhs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pack-price-line">
+        <span>Shampoing Aloe-Jojoba</span>
+        <div class="price-badge-container pack-line-price">
+          <div class="price-badge">
+            <span class="price-label">السعر:</span>
+            <div class="price-value-wrapper">
+              <span class="price-number">257</span>
+              <span class="price-currency">Dhs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pack-total-row">
+      <span class="pack-total-label">المجموع</span>
+      <div class="price-badge-container pack-line-price">
+        <div class="price-badge">
+          <span class="price-label">الإجمالي:</span>
+          <div class="price-value-wrapper">
+            <span class="price-number">903</span>
+            <span class="price-currency">DH</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="logic-discount-banner">🎁 خذ الثلاثة معاً: تخفيض بقيمة -19 DH</div>
+
+    <div class="pack-price-compare">
+      <div class="price-old-box">
+        <div class="price-badge-container centered">
+          <div class="price-badge price-badge--struck">
+            <span class="price-label">السعر الأصلي</span>
+            <div class="price-value-wrapper">
+              <span class="price-number">903</span>
+              <span class="price-currency">DH</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="price-arrow">→</div>
+      <div class="price-new-box">
+        <div class="price-badge-container centered">
+          <div class="price-badge price-badge--large">
+            <span class="price-label">السعر النهائي</span>
+            <div class="price-value-wrapper">
+              <span class="price-number">884</span>
+              <span class="price-currency">DH</span>
+            </div>
+          </div>
+        </div>
+        <span class="pack-final-only">فقط!</span>
+      </div>
+    </div>
+
+    <p class="logic-free-shipping">🚚 + التوصيل مجاني!</p>
+
+    <div class="logic-wa-cta-wrap">
+      <button type="button" class="logic-wa-cta" onclick="orderPack('pack-routine', event)">
+        <span class="logic-wa-cta-main">اطلبي باك الشعر المثالي الآن عبر الواتساب</span>
         <span class="logic-wa-cta-sub">(اضغطي هنا لإرسال الطلب مباشرة والاستفادة من التوصيل المجاني)</span>
       </button>
     </div>
