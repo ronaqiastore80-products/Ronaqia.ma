@@ -142,7 +142,7 @@ function renderPackCard(pack, index) {
         <div class="pack-cadeau-tag">${escapeHtml(pack.cadeauTag || '🎁 Cadeau')}</div>
       </div>
       <h3 class="pack-title">${escapeHtml(pack.name)}</h3>
-      <p class="pack-click-hint">👆 اضغطي لعرض التفاصيل</p>
+      <p class="pack-click-hint" lang="ar" dir="rtl">👆 اضغطي لعرض التفاصيل</p>
       <p class="pack-subtitle">${escapeHtml(pack.subtitle)}</p>
       <div class="pack-price-display">${renderPriceBadge(pack.price)}</div>
       <button type="button" class="btn-order-now" onclick="orderPack('${escapeHtml(pack.id)}', event)">

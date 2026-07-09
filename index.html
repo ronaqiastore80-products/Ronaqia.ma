@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,13 +29,45 @@
     --font-darija: 'Cairo', sans-serif;
   }
 
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: clip;
+  }
 
   body {
     font-family: var(--font-body);
     background: var(--cream);
     color: var(--text-dark);
-    overflow-x: hidden;
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  img, video, svg, canvas { max-width: 100%; height: auto; }
+
+  [lang="ar"] {
+    direction: rtl;
+    unicode-bidi: isolate;
+    font-family: var(--font-darija);
+  }
+
+  [lang="fr"] {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  .bilingual-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .bilingual-label .label-sep {
+    width: 36px;
+    height: 2px;
+    background: rgba(45, 106, 79, 0.22);
+    border-radius: 2px;
   }
 
   a { text-decoration: none; color: inherit; }
@@ -361,7 +393,6 @@
   }
 
   .section-label {
-    font-family: var(--font-darija);
     font-size: 0.8rem;
     letter-spacing: 0.1em;
     color: var(--green-mid);
@@ -369,8 +400,16 @@
     margin-bottom: 10px;
   }
 
-  .section-title {
+  .section-label[lang="fr"] {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+  }
+
+  .section-label[lang="ar"] {
     font-family: var(--font-darija);
+  }
+
+  .section-title {
     font-size: clamp(1.8rem, 4vw, 2.6rem);
     font-weight: 700;
     color: var(--green-deep);
@@ -378,12 +417,27 @@
     line-height: 1.35;
   }
 
-  .section-desc {
+  .section-title[lang="fr"] {
+    font-family: var(--font-display);
+  }
+
+  .section-title[lang="ar"] {
     font-family: var(--font-darija);
+  }
+
+  .section-desc {
     font-size: 0.95rem;
     color: var(--text-mid);
     line-height: 1.85;
     font-weight: 400;
+  }
+
+  .section-desc[lang="fr"] {
+    font-family: var(--font-body);
+  }
+
+  .section-desc[lang="ar"] {
+    font-family: var(--font-darija);
   }
 
   .packs-grid {
@@ -1939,45 +1993,81 @@
     margin: 0 auto 48px;
   }
 
+  #catalogGrid {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  #catalogCategoryContent {
+    width: 100%;
+  }
+
   .catalog-filter-wrap {
     max-width: 1100px;
     margin: 0 auto 36px;
     text-align: center;
+    padding: 0 4px;
   }
 
   .catalog-filter-label {
-    font-family: var(--font-darija);
     font-size: 0.82rem;
     font-weight: 600;
     letter-spacing: 0.04em;
-    text-transform: uppercase;
     color: #718d68;
     margin-bottom: 16px;
+  }
+
+  .catalog-filter-label[lang="fr"] {
+    font-family: var(--font-body);
+    text-transform: uppercase;
+  }
+
+  .catalog-filter-label[lang="ar"] {
+    font-family: var(--font-darija);
   }
 
   .catalog-filter {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: stretch;
     gap: 12px;
+    width: 100%;
   }
 
   .catalog-filter-btn {
     display: inline-flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 12px 24px;
+    gap: 4px;
+    padding: 12px 20px;
     border: 2px solid rgba(113, 141, 104, 0.35);
     border-radius: 50px;
     background: #fff;
     color: var(--green-deep);
-    font-family: var(--font-darija);
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
     min-height: 44px;
+    min-width: min(100%, 200px);
+    max-width: 280px;
+    flex: 1 1 200px;
+    text-align: center;
+  }
+
+  .catalog-filter-btn .label-fr {
+    font-family: var(--font-body);
+    line-height: 1.3;
+  }
+
+  .catalog-filter-btn .label-ar {
+    font-family: var(--font-darija);
+    font-size: 0.82rem;
+    opacity: 0.9;
+    line-height: 1.4;
   }
 
   .catalog-filter-btn:hover {
@@ -1993,9 +2083,9 @@
     box-shadow: 0 8px 24px rgba(45, 106, 79, 0.2);
   }
 
-  .catalog-filter-btn-ar {
-    font-size: 0.78rem;
-    opacity: 0.85;
+  .catalog-filter-btn.active .label-fr,
+  .catalog-filter-btn.active .label-ar {
+    color: #fff;
   }
 
   .catalog-empty {
@@ -2009,44 +2099,54 @@
     background: rgba(255, 255, 255, 0.7);
     border-radius: 20px;
     border: 1px dashed rgba(113, 141, 104, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 
   .catalog-category {
     max-width: 1100px;
     margin: 0 auto 48px;
+    width: 100%;
   }
 
   .catalog-category-head {
     margin-bottom: 28px;
     padding-bottom: 20px;
     border-bottom: 2px solid rgba(113, 141, 104, 0.15);
+    text-align: center;
   }
 
   .catalog-category-title {
-    font-family: var(--font-darija);
+    font-family: var(--font-body);
     font-size: clamp(1.4rem, 3vw, 1.85rem);
     font-weight: 700;
     color: var(--green-deep);
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
 
   .catalog-category-title-ar {
     font-family: var(--font-darija);
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #718d68;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   .catalog-category-desc {
+    font-family: var(--font-body);
     font-size: 0.92rem;
     color: var(--text-mid);
     line-height: 1.7;
+    max-width: 640px;
+    margin: 0 auto;
   }
 
   .catalog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 24px;
+    justify-content: center;
+    width: 100%;
   }
 
   .catalog-card {
@@ -2059,6 +2159,9 @@
     transition: transform 0.25s, box-shadow 0.25s;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
   }
 
   .catalog-card:hover {
@@ -2091,11 +2194,11 @@
   }
 
   .catalog-card-title {
+    font-family: var(--font-body);
     font-size: 1.1rem;
     font-weight: 700;
     color: #1a1a1a;
     margin-bottom: 10px;
-    direction: ltr;
     text-align: left;
   }
 
@@ -2104,17 +2207,34 @@
   }
 
   .catalog-card-summary {
+    font-family: var(--font-darija);
     font-size: 0.88rem;
     color: var(--text-mid);
     line-height: 1.75;
     flex: 1;
     margin-bottom: 14px;
+    text-align: right;
   }
 
   .catalog-card-cta {
+    font-family: var(--font-body);
     font-size: 0.82rem;
     font-weight: 600;
     color: #718d68;
+    text-align: left;
+  }
+
+  .pack-detail-ar {
+    text-align: right;
+  }
+
+  .product-detail-body h3[lang="ar"] {
+    text-align: right;
+  }
+
+  .product-detail-body .product-fr[lang="fr"] {
+    text-align: left;
+    unicode-bidi: isolate;
   }
 
   /* ── Modal produit ── */
@@ -2201,7 +2321,6 @@
     font-weight: 700;
     color: #1a3d2e;
     margin-bottom: 12px;
-    direction: ltr;
     text-align: left;
   }
 
@@ -2214,6 +2333,8 @@
     color: var(--text-mid);
     line-height: 1.9;
     margin-bottom: 24px;
+    text-align: right;
+    white-space: pre-line;
   }
 
   .product-modal-actions {
@@ -2729,10 +2850,14 @@
       margin-bottom: 24px;
     }
     .catalog-grid { grid-template-columns: 1fr; }
-    .catalog-filter { gap: 10px; }
+    .catalog-filter {
+      flex-direction: column;
+      align-items: center;
+    }
     .catalog-filter-btn {
       width: 100%;
       max-width: 320px;
+      flex: 0 0 auto;
       padding: 12px 18px;
       font-size: 0.9rem;
     }
@@ -2760,7 +2885,7 @@
 <body>
 
 <!-- ══ BANNER PROMO ══ -->
-<div class="darija-banner">
+<div class="darija-banner" lang="fr">
   <span class="gift-icon">🎁</span>
   Profitez de nos packs <span>BIO 100%</span> avec <span>cadeaux offerts</span> —
   <span>livraison gratuite</span> selon les promotions en cours. Commandez maintenant et économisez !
@@ -2775,7 +2900,7 @@
     </div>
     <div class="logo-text">
       <div class="logo-name">RONAQIA</div>
-      <div class="logo-tagline">Soins Naturels · BIO</div>
+      <div class="logo-tagline" lang="fr">Soins Naturels · BIO</div>
     </div>
   </a>
 
@@ -2783,7 +2908,7 @@
     <span></span><span></span><span></span>
   </button>
 
-  <nav>
+  <nav lang="fr">
     <ul class="main-nav" id="mainNav">
       <li><a href="#home">Accueil</a></li>
       <li><a href="#packs">Nos Packs</a></li>
@@ -2804,9 +2929,9 @@
         <span class="hero-tag hero-tag--sage">100% BIO</span>
         <span class="hero-tag hero-tag--sage">Cadeaux offerts</span>
       </div>
-      <h1>RONAQIA — Soins naturels &amp; packs promo</h1>
-      <p class="hero-subline">Jusqu'à -95 DH sur nos packs exclusifs ! Produits 100% BIO, cadeaux offerts et promotions limitées — découvrez nos offres ci-dessous.</p>
-      <a href="#packs" class="btn-scroll">Voir les Packs ↓</a>
+      <h1 lang="fr">RONAQIA — Soins naturels &amp; packs promo</h1>
+      <p class="hero-subline" lang="fr">Jusqu'à -95 DH sur nos packs exclusifs ! Produits 100% BIO, cadeaux offerts et promotions limitées — découvrez nos offres ci-dessous.</p>
+      <a href="#packs" class="btn-scroll" lang="fr">Voir les Packs ↓</a>
     </div>
   </div>
 </section>
@@ -2820,9 +2945,13 @@
 <!-- ══ SECTION 2: PACKS PROMO ══ -->
 <section class="section-packs" id="packs">
   <div class="section-header fade-up">
-    <p class="section-label">عروض خاصة · Offres Limitées</p>
-    <h2 class="section-title">Chaque pack regroupe de superbes produits BIO avec un cadeau</h2>
-    <p class="section-desc">Réductions exclusives, offres limitées et livraison gratuite — choisissez votre pack et profitez de la promotion !</p>
+    <div class="bilingual-label section-label">
+      <span lang="fr">Offres Limitées</span>
+      <span class="label-sep" aria-hidden="true"></span>
+      <span lang="ar">عروض خاصة</span>
+    </div>
+    <h2 class="section-title" lang="fr">Chaque pack regroupe de superbes produits BIO avec un cadeau</h2>
+    <p class="section-desc" lang="fr">Réductions exclusives, offres limitées et livraison gratuite — choisissez votre pack et profitez de la promotion !</p>
   </div>
 
   <div class="packs-grid" id="packsGrid">
@@ -2838,16 +2967,18 @@
 <!-- ══ PACK INFINITE – DESCRIPTION ══ -->
 <section class="section-pack-detail" id="pack-infinite" data-pack-detail="infinite">
   <div class="pack-detail-header fade-up">
-    <div class="infinity-logo">∞ infinite by Forever</div>
-    <h2>مجموعة "infinite by Forever" لمحاربة علامات التقدم في السن</h2>
-    <p class="pack-detail-intro">مجموعة infinite by Forever هي تركيبة مبتكرة للعناية بالبشرة، تجمع بين فوائد الألوفيرا ومركز من المكونات النشطة المضادة للشيخوخة. تتميز هذه المجموعة بقوامها الفريد لتمنحك روتينًا يوميًا بنتائج استثنائية.</p>
-    <p class="pack-detail-intro">تجمع هذه المجموعة بين 3 مستحضرات تجميلية ومكمل غذائي واحد، لتعمل كلها في تناغم تام (من الداخل والخارج) لخدمة جمال وشباب بشرتك.</p>
+    <div class="infinity-logo" lang="fr">∞ infinite by Forever</div>
+    <div class="pack-detail-ar" lang="ar" dir="rtl">
+      <h2>مجموعة "infinite by Forever" لمحاربة علامات التقدم في السن</h2>
+      <p class="pack-detail-intro">مجموعة infinite by Forever هي تركيبة مبتكرة للعناية بالبشرة، تجمع بين فوائد الألوفيرا ومركز من المكونات النشطة المضادة للشيخوخة. تتميز هذه المجموعة بقوامها الفريد لتمنحك روتينًا يوميًا بنتائج استثنائية.</p>
+      <p class="pack-detail-intro">تجمع هذه المجموعة بين 3 مستحضرات تجميلية ومكمل غذائي واحد، لتعمل كلها في تناغم تام (من الداخل والخارج) لخدمة جمال وشباب بشرتك.</p>
+    </div>
     <div class="pack-detail-hero-img">
       <img src="images/pack1.jpg" alt="Coffret infinite by Forever">
     </div>
   </div>
 
-  <p class="routine-label">1️⃣ روتين العناية اليومي (طريقة الاستعمال والفوائد)</p>
+  <p class="routine-label" lang="ar" dir="rtl">1️⃣ روتين العناية اليومي (طريقة الاستعمال والفوائد)</p>
 
   <div class="products-detail-grid">
 
@@ -2855,10 +2986,10 @@
       <div class="product-detail-img">
         <img src="images/cleanser.png" alt="المنظف المرطب">
       </div>
-      <div class="product-detail-body">
+      <div class="product-detail-body" lang="ar" dir="rtl">
         <span class="product-step">الخطوة 1</span>
         <h3>المنظف المرطب</h3>
-        <p class="product-fr">Démaquillant Hydratant Infinite</p>
+        <p class="product-fr" lang="fr">Démaquillant Hydratant Infinite</p>
         <div class="product-price-tag">
           <div class="price-badge-container">
             <div class="price-badge">
@@ -2885,10 +3016,10 @@
       <div class="product-detail-img">
         <img src="images/serum.png" alt="السيروم المرمم">
       </div>
-      <div class="product-detail-body">
+      <div class="product-detail-body" lang="ar" dir="rtl">
         <span class="product-step">الخطوة 2</span>
         <h3>السيروم المرمم</h3>
-        <p class="product-fr">Sérum Raffermissant</p>
+        <p class="product-fr" lang="fr">Sérum Raffermissant</p>
         <div class="product-price-tag">
           <div class="price-badge-container">
             <div class="price-badge">
@@ -2915,12 +3046,13 @@
       <div class="product-detail-img product-detail-img--complexe">
         <img src="images/complexe.png" alt="إكسير الشباب من الداخل">
       </div>
-      <div class="product-detail-body product-detail-body--complexe">
+      <div class="product-detail-body product-detail-body--complexe" lang="ar" dir="rtl">
         <div class="complexe-minimal-badge" aria-hidden="true">
           <span class="complexe-badge-ring"></span>
           <span class="complexe-badge-spark"></span>
         </div>
-        <p class="complexe-product-fr">Complexe Raffermissant · 60 comprimés</p>
+        <p class="complexe-product-fr" lang="fr">Complexe Raffermissant</p>
+        <p class="complexe-product-fr" lang="fr">60 comprimés</p>
         <h3 class="complexe-title">إكسير الشباب من الداخل: سرّ الكولاجين الطبيعي</h3>
         <p class="complexe-tagline">سرّ الماركات العالمية: روتين مزدوج (كريم من الخارج + تغذية خلوية من الداخل) لنتائج تدوم طويلاً</p>
         <div class="price-badge-container complexe-price">
@@ -2947,10 +3079,10 @@
       <div class="product-detail-img">
         <img src="images/creme.png" alt="الكريمة المرممة">
       </div>
-      <div class="product-detail-body">
+      <div class="product-detail-body" lang="ar" dir="rtl">
         <span class="product-step">الخطوة 4</span>
         <h3>الكريمة المرممة</h3>
-        <p class="product-fr">Crème Réparatrice</p>
+        <p class="product-fr" lang="fr">Crème Réparatrice</p>
         <div class="product-price-tag">
           <div class="price-badge-container">
             <div class="price-badge">
@@ -3114,16 +3246,18 @@
 <!-- ══ PACK SOINS LOGIC – DESCRIPTION ══ -->
 <section class="section-pack-detail" id="pack-logic" data-pack-detail="logic">
   <div class="pack-detail-header fade-up">
-    <div class="logic-logo">Soins Logic<span>by Forever</span></div>
-    <h2>روتين العناية الذكي — ثلاث خطوات طبيعية لبشرة متوازنة ومشرقة</h2>
-    <p class="pack-detail-intro">مجموعة Soins Logic تجمع بين قوة الألوفيرا النقية ومستخلصات الطبيعة الفاخرة في روتين يومي بسيط وفعّال. ثلاثة منتجات متناغمة لتنظيف، توازن وترطيب بشرتك دون أي جفاف أو دهون زائدة.</p>
-    <p class="pack-detail-intro">أكثر من 94% من المكونات طبيعية في كل خطوة — لنتائج ملموسة من أول استعمال.</p>
+    <div class="logic-logo" lang="fr">Soins Logic<span>by Forever</span></div>
+    <div class="pack-detail-ar" lang="ar" dir="rtl">
+      <h2>روتين العناية الذكي — ثلاث خطوات طبيعية لبشرة متوازنة ومشرقة</h2>
+      <p class="pack-detail-intro">مجموعة <span lang="fr" dir="ltr">Soins Logic</span> تجمع بين قوة الألوفيرا النقية ومستخلصات الطبيعة الفاخرة في روتين يومي بسيط وفعّال. ثلاثة منتجات متناغمة لتنظيف، توازن وترطيب بشرتك دون أي جفاف أو دهون زائدة.</p>
+      <p class="pack-detail-intro">أكثر من 94% من المكونات طبيعية في كل خطوة — لنتائج ملموسة من أول استعمال.</p>
+    </div>
     <div class="pack-detail-hero-img">
       <img src="images/pack-logic.png" alt="Pack Soins Logic">
     </div>
   </div>
 
-  <p class="routine-label">1️⃣ روتين العناية اليومي (المنتجات والفوائد)</p>
+  <p class="routine-label" lang="ar" dir="rtl">1️⃣ روتين العناية اليومي (المنتجات والفوائد)</p>
 
   <div class="products-detail-grid">
 
@@ -3131,10 +3265,10 @@
       <div class="product-detail-img">
         <img src="images/logic-cleanser.png" alt="Logic Aloe Gel Cleanser">
       </div>
-      <div class="product-detail-body">
+      <div class="product-detail-body" lang="ar" dir="rtl">
         <span class="product-step">الخطوة 1</span>
         <h3>منظف الجل بالألوفيرا</h3>
-        <p class="product-fr">Logic Aloe Gel Cleanser</p>
+        <p class="product-fr" lang="fr">Logic Aloe Gel Cleanser</p>
         <div class="product-price-tag">
           <div class="price-badge-container">
             <div class="price-badge">
@@ -3157,10 +3291,10 @@
       <div class="product-detail-img">
         <img src="images/logic-essence.webp" alt="Logic Balancing Aloe Essence">
       </div>
-      <div class="product-detail-body">
+      <div class="product-detail-body" lang="ar" dir="rtl">
         <span class="product-step">الخطوة 2</span>
         <h3>إسنس الألوفيرا المتوازن</h3>
-        <p class="product-fr">Logic Balancing Aloe Essence</p>
+        <p class="product-fr" lang="fr">Logic Balancing Aloe Essence</p>
         <div class="product-price-tag">
           <div class="price-badge-container">
             <div class="price-badge">
@@ -3183,10 +3317,10 @@
       <div class="product-detail-img">
         <img src="images/logic-moisturizer.webp" alt="Logic Soothing Gel Moisturizer">
       </div>
-      <div class="product-detail-body">
+      <div class="product-detail-body" lang="ar" dir="rtl">
         <span class="product-step">الخطوة 3</span>
         <h3>جل الترطيب المهدئ</h3>
-        <p class="product-fr">Logic Soothing Gel Moisturizer</p>
+        <p class="product-fr" lang="fr">Logic Soothing Gel Moisturizer</p>
         <div class="product-price-tag">
           <div class="price-badge-container">
             <div class="price-badge">
@@ -3298,16 +3432,18 @@
 <!-- ══ PACK CHEVEUX – DESCRIPTION ══ -->
 <section class="section-pack-detail" id="pack-cheveux" data-pack-detail="cheveux">
   <div class="pack-detail-header fade-up">
-    <div class="cheveux-logo">Pack Cheveux Parfaits<span>RONAQIA · Forever Living</span></div>
-    <h2>باك روتين الشعر المثالي — عناية طبيعية متكاملة ضد التقصف والجفاف</h2>
-    <p class="pack-detail-intro">تبحثين عن شعر ناعم، قوي، ومليء بالحيوية؟ اكتشفي الروتين الطبيعي المتكامل للعناية بالشعر من RONAQIA. هاد الباك كيجمع بين قوة الألوفيرا النقية، زيت الجوجوبا، و6 زيوت نباتية فاخرة لتنظيف فروة الرأس بعمق، فك التشابك بكل سهولة، وتغذية الأطراف من الجذور حتى الأعماق.</p>
-    <p class="pack-detail-intro">🌱 طبيعي 100% | خالي من السلفات والسيليكون | مناسب لجميع أنواع الشعر.</p>
+    <div class="cheveux-logo" lang="fr">Pack Cheveux Parfaits<span>RONAQIA · Forever Living</span></div>
+    <div class="pack-detail-ar" lang="ar" dir="rtl">
+      <h2>باك روتين الشعر المثالي — عناية طبيعية متكاملة ضد التقصف والجفاف</h2>
+      <p class="pack-detail-intro">تبحثين عن شعر ناعم، قوي، ومليء بالحيوية؟ اكتشفي الروتين الطبيعي المتكامل للعناية بالشعر من <span lang="fr" dir="ltr">RONAQIA</span>. هاد الباك كيجمع بين قوة الألوفيرا النقية، زيت الجوجوبا، و6 زيوت نباتية فاخرة لتنظيف فروة الرأس بعمق، فك التشابك بكل سهولة، وتغذية الأطراف من الجذور حتى الأعماق.</p>
+      <p class="pack-detail-intro">🌱 طبيعي 100% | خالي من السلفات والسيليكون | مناسب لجميع أنواع الشعر.</p>
+    </div>
     <div class="pack-detail-hero-img">
       <img src="images/pack-cheveux.png" alt="Pack Cheveux Parfaits">
     </div>
   </div>
 
-  <p class="routine-label">💇‍♀️ روتين العناية بالشعر (المنتجات والفوائد)</p>
+  <p class="routine-label" lang="ar" dir="rtl">💇‍♀️ روتين العناية بالشعر (المنتجات والفوائد)</p>
 
   <div class="products-detail-grid">
 
@@ -3315,10 +3451,10 @@
       <div class="product-detail-img">
         <img src="images/cheveux-huile.png" alt="Huile Capillaire Nourrissante">
       </div>
-      <div class="product-detail-body">
+      <div class="product-detail-body" lang="ar" dir="rtl">
         <span class="product-step">✨ الخطوة 1</span>
         <h3>زيت الشعر المغذي</h3>
-        <p class="product-fr">Huile Capillaire Nourrissante</p>
+        <p class="product-fr" lang="fr">Huile Capillaire Nourrissante</p>
         <div class="product-price-tag">
           <div class="price-badge-container">
             <div class="price-badge">
@@ -3341,10 +3477,10 @@
       <div class="product-detail-img">
         <img src="images/cheveux-apres-shampo.png" alt="Après-Shampoing Aloe-Jojoba">
       </div>
-      <div class="product-detail-body">
+      <div class="product-detail-body" lang="ar" dir="rtl">
         <span class="product-step">🌿 الخطوة 2</span>
         <h3>بلسم الألوفيرا والجوجوبا</h3>
-        <p class="product-fr">Après-Shampoing Aloe-Jojoba</p>
+        <p class="product-fr" lang="fr">Après-Shampoing Aloe-Jojoba</p>
         <div class="product-price-tag">
           <div class="price-badge-container">
             <div class="price-badge">
@@ -3367,10 +3503,10 @@
       <div class="product-detail-img">
         <img src="images/cheveux-shampo.png" alt="Shampoing Aloe-Jojoba">
       </div>
-      <div class="product-detail-body">
+      <div class="product-detail-body" lang="ar" dir="rtl">
         <span class="product-step">🧴 الخطوة 3</span>
         <h3>شامبو الألوفيرا والجوجوبا</h3>
-        <p class="product-fr">Shampoing Aloe-Jojoba</p>
+        <p class="product-fr" lang="fr">Shampoing Aloe-Jojoba</p>
         <div class="product-price-tag">
           <div class="price-badge-container">
             <div class="price-badge">
@@ -3500,9 +3636,13 @@
 <!-- ══ CATALOGUE PRODUITS ══ -->
 <section class="section-catalog" id="about">
   <div class="catalog-header fade-up">
-    <p class="section-label">Catalogue · منتجاتنا</p>
-    <h2 class="section-title">Nos produits Forever Living</h2>
-    <p class="section-desc">Découvrez notre sélection de produits naturels — choisissez une catégorie, puis cliquez sur une carte pour voir les détails et commander.</p>
+    <div class="bilingual-label section-label">
+      <span lang="fr">Catalogue</span>
+      <span class="label-sep" aria-hidden="true"></span>
+      <span lang="ar">منتجاتنا</span>
+    </div>
+    <h2 class="section-title" lang="fr">Nos produits Forever Living</h2>
+    <p class="section-desc" lang="fr">Découvrez notre sélection de produits naturels — choisissez une catégorie, puis cliquez sur une carte pour voir les détails et commander.</p>
   </div>
   <div id="catalogGrid"></div>
 </section>
@@ -3516,21 +3656,21 @@
       <img id="productModalImg" src="" alt="">
     </div>
     <div class="product-modal-body">
-      <h2 id="productModalName"></h2>
+      <h2 id="productModalName" lang="fr"></h2>
       <div class="product-modal-price" id="productModalPrice"></div>
-      <p class="product-modal-desc" id="productModalDesc"></p>
+      <p class="product-modal-desc" id="productModalDesc" lang="ar" dir="rtl"></p>
       <div class="product-modal-actions">
-        <button type="button" class="btn-product-wa" id="productModalOrder">
+        <button type="button" class="btn-product-wa" id="productModalOrder" lang="fr">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Commander sur WhatsApp
         </button>
-        <button type="button" class="btn-product-share" id="productModalShare">
+        <button type="button" class="btn-product-share" id="productModalShare" lang="fr">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>
           Partager
         </button>
       </div>
-      <div class="product-opportunity-box">
-        <p>💰 Vous pouvez également gagner de l'argent avec ce produit.<br>Rejoignez notre équipe Forever et commencez votre activité.</p>
+      <div class="product-opportunity-box" lang="fr">
+        <p>Vous pouvez également gagner de l'argent avec ce produit.<br>Rejoignez notre équipe Forever et commencez votre activité.</p>
         <button type="button" class="btn-opportunity" id="productOpportunityBtn">Découvrir l'opportunité</button>
       </div>
     </div>
@@ -3538,7 +3678,7 @@
 </div>
 
 <!-- ══ PANNEAU PARTAGE ══ -->
-<div class="share-panel" id="productSharePanel">
+<div class="share-panel" id="productSharePanel" lang="fr">
   <div class="share-panel-inner">
     <h4>Partager ce produit</h4>
     <div class="share-options">
@@ -3567,7 +3707,7 @@
         <img src="images/Logo_Ronaqia.png" alt="RONAQIA">
       </div>
       <p class="footer-brand-name">RONAQIA</p>
-      <p class="footer-brand-tagline">Soins naturels BIO · Marque de confiance au Maroc</p>
+      <p class="footer-brand-tagline" lang="fr">Soins naturels BIO · Marque de confiance au Maroc</p>
       <div class="footer-social">
         <a href="#" id="footerWaSocial" class="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
           <svg viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -3592,7 +3732,7 @@
             <span class="footer-contact-label">WhatsApp</span>
             <a href="#" id="footerWhatsappLink" target="_blank" rel="noopener noreferrer">Contactez-nous</a>
             <bdi dir="ltr" id="footerWhatsappNumber" class="price-ltr"></bdi>
-            <span class="footer-consult-badge">استشارة مجانية — Istichara majania</span>
+            <span class="footer-consult-badge">استشارة مجانية | Consultation gratuite</span>
           </span>
         </li>
         <li class="footer-contact-item">

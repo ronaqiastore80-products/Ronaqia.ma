@@ -104,11 +104,17 @@ function openProductModal(product) {
   const modal = document.getElementById('productModal');
   if (!modal) return;
 
+  const nameEl = document.getElementById('productModalName');
+  const descEl = document.getElementById('productModalDesc');
+
   document.getElementById('productModalImg').src = product.image;
   document.getElementById('productModalImg').alt = product.name;
-  document.getElementById('productModalName').textContent = product.name;
+  nameEl.textContent = product.name;
+  nameEl.setAttribute('lang', 'fr');
   document.getElementById('productModalPrice').innerHTML = renderPriceBadge(product.price, 'السعر:');
-  document.getElementById('productModalDesc').textContent = product.description;
+  descEl.textContent = product.description;
+  descEl.setAttribute('lang', 'ar');
+  descEl.setAttribute('dir', 'rtl');
 
   history.replaceState(null, '', getProductShareUrl(product.id));
   modal.classList.add('visible');
@@ -136,10 +142,10 @@ function renderProductCard(product) {
              onerror="this.src='images/Logo_Ronaqia.png';this.style.objectFit='contain';this.style.padding='20px'">
       </div>
       <div class="catalog-card-body">
-        <h3 class="catalog-card-title">${escapeHtml(product.name)}</h3>
+        <h3 class="catalog-card-title" lang="fr">${escapeHtml(product.name)}</h3>
         <div class="catalog-card-price">${renderPriceBadge(product.price)}</div>
-        <p class="catalog-card-summary">${escapeHtml(product.summary)}</p>
-        <span class="catalog-card-cta">Voir le détail →</span>
+        <p class="catalog-card-summary" lang="ar" dir="rtl">${escapeHtml(product.summary)}</p>
+        <span class="catalog-card-cta" lang="fr">Voir le détail →</span>
       </div>
     </article>`;
 }
@@ -147,18 +153,18 @@ function renderProductCard(product) {
 function renderCategoryContent(category) {
   if (!category) {
     return `
-      <p class="catalog-empty fade-up">
-        Sélectionnez une catégorie ci-dessus pour découvrir nos produits.<br>
-        <span dir="rtl">اختر فئة أعلاه لاكتشاف منتجاتنا.</span>
-      </p>`;
+      <div class="catalog-empty fade-up">
+        <p lang="fr">Sélectionnez une catégorie ci-dessus pour découvrir nos produits.</p>
+        <p lang="ar" dir="rtl">اختر فئة أعلاه لاكتشاف منتجاتنا.</p>
+      </div>`;
   }
 
   return `
     <div class="catalog-category fade-up" id="${escapeHtml(category.id)}">
       <div class="catalog-category-head">
-        <h3 class="catalog-category-title">${escapeHtml(category.title)}</h3>
-        <p class="catalog-category-title-ar">${escapeHtml(category.titleAr || '')}</p>
-        <p class="catalog-category-desc">${escapeHtml(category.description || '')}</p>
+        <h3 class="catalog-category-title" lang="fr">${escapeHtml(category.title)}</h3>
+        ${category.titleAr ? `<p class="catalog-category-title-ar" lang="ar" dir="rtl">${escapeHtml(category.titleAr)}</p>` : ''}
+        <p class="catalog-category-desc" lang="fr">${escapeHtml(category.description || '')}</p>
       </div>
       <div class="catalog-grid">
         ${(category.products || []).map(p => renderProductCard(p)).join('')}
@@ -199,7 +205,11 @@ function setActiveCategory(categoryId, options = {}) {
 function renderCategoryFilter() {
   return `
     <div class="catalog-filter-wrap fade-up">
-      <p class="catalog-filter-label">Filtre par catégorie · تصنيف حسب الفئة</p>
+      <div class="catalog-filter-label bilingual-label">
+        <span lang="fr">Filtre par catégorie</span>
+        <span class="label-sep" aria-hidden="true"></span>
+        <span lang="ar" dir="rtl">تصنيف حسب الفئة</span>
+      </div>
       <div class="catalog-filter" role="tablist" aria-label="Filtre par catégorie">
         ${catalogData.categories.map(cat => `
           <button type="button"
@@ -208,8 +218,8 @@ function renderCategoryFilter() {
                   data-category="${escapeHtml(cat.id)}"
                   aria-selected="false"
                   onclick="setActiveCategory('${escapeHtml(cat.id)}')">
-            <span>${escapeHtml(cat.title)}</span>
-            ${cat.titleAr ? `<span class="catalog-filter-btn-ar" dir="rtl">${escapeHtml(cat.titleAr)}</span>` : ''}
+            <span class="label-fr" lang="fr">${escapeHtml(cat.title)}</span>
+            ${cat.titleAr ? `<span class="label-ar" lang="ar" dir="rtl">${escapeHtml(cat.titleAr)}</span>` : ''}
           </button>
         `).join('')}
       </div>
